@@ -1,8 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
 
 const Home = () => {
+  const [title, setTitle] = useState('');
+  const [value, setValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pasteId = searchParams.get("pasteId");
+
   return (
-    <div>Home</div>
+    <div>
+      <div className='flex flex-row gap-7'>
+        <input
+          className='p-3 rounded-2xl mt-2'
+          type="text"
+          placeholder='enter title here'
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <button className='p-3 rounded-2xl mt-2'>
+          {
+            pasteId ? "Update My Paste" : "Create My Paste"
+          }
+        </button>
+      </div>
+      <div>
+        <textarea 
+          value={value}
+          placeholder='enter content here'
+          onChange={(e) => setValue(e.target.value)}
+          rows={20}
+        />
+      </div>
+    </div>
   )
 }
 
