@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { removeFromPastes } from '../redux/pasteSlice';
 
 const Paste = () => {
     const pastes = useSelector((state) => 
